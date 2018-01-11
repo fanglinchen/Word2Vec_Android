@@ -8,4 +8,4 @@ Archive.org has the official and the most up-to-date Stack Exchange data dump up
 
 https://archive.org/details/stackexchange
 
-The dataset is fully structured, so we can use this structure information for data filtering. Since we are only interested in the language of mobile app developments, we leverage the Tag information in each post to only select the Android related posts. 
+The dataset is fully structured in XML, so we can use this structure information for data filtering. Since we are only interested in the language of mobile app developments, we leverage the Tag information in each post to only select the Android related posts. 
