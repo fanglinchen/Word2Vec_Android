@@ -11,7 +11,7 @@ class DBConnector:
         self.conn = MySQLdb.connect(
             host=parser.get('DATABASE', 'HOST'),
             user=parser.get('DATABASE', 'USER'),
-            password=parser.get('DATABASE', 'PASSWORD'),
+            passwd=parser.get('DATABASE', 'PASSWORD'),
             db=parser.get('DATABASE', 'DB'),
             use_unicode=True,
             charset="utf8")
