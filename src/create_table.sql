@@ -1,4 +1,4 @@
-CREATE TABLE python_posts_all(
+CREATE TABLE android_posts(
   id INT(11) NOT NULL AUTO_INCREMENT,
   PostTypeId INT(11) NOT NULL,
   AcceptedAnswerId INT(11) NULL DEFAULT NULL,

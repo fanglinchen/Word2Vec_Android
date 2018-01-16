@@ -16,27 +16,16 @@ fp.seek(0)
 parser.readfp(fp)
 
 
-def should_be_skipped_by_tag(tags):
-    if not tags:
-        return True
-    if parser.get('TAGS', 'TAGNAME') not in tags:
-        return True
-    else:
-        return False
-
-
 def should_be_skipped(attributes):
-    if str(attributes['PostTypeId']) == '1':
-        if should_be_skipped_by_tag(attributes['Tags']):
-            return True
-        if attributes['Score'] < 0:
-            return True
-        if attributes['Score'] == 0 and attributes['AnswerCount'] == 0:
-            return True
-        if "android" not in attributes['Tags']:
-            return True
-    if str(attributes['PostTypeId']) == '2':
+    if attributes['Tags'] == None:
         return True
+    if "android" not in attributes['Tags']:
+        return True
+    if attributes['Score'] < 0:
+        return True
+    if attributes['Score'] == 0 and attributes['AnswerCount'] == 0:
+        return True
+
     return False
 
 
@@ -54,6 +43,12 @@ class StackoverflowDumpToDBService:
         counter = 0
         while True:
             current_line = f.readline()
+            scanned_row_nums +=1
+            if scanned_row_nums % 1000 ==0:
+                print("scanned_row_nums:"+str(scanned_row_nums))
+            if scanned_row_nums <= 1571000:
+                continue
+            
             if not current_line:
                 break
             try:
@@ -83,9 +78,8 @@ class StackoverflowDumpToDBService:
             attributes['Score'] = int(attributes.get('Score'))
             attributes['ParentId'] = attributes.get('ParentId', None)
             creation_date = datetime.datetime.strptime(attributes['CreationDate'], '%Y-%m-%d  %H:%M:%S')
-            scanned_row_nums +=1
-            if scanned_row_nums % 1000 ==0:
-                print("scanned_row_nums:"+str(scanned_row_nums))
+            
+
             if creation_date < from_date:
                 continue
             if creation_date >= until_date:
