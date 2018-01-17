@@ -51,6 +51,9 @@ def remove_tags(string):
 
 non_english_regex = re.compile('[^A-Za-z]')
 def remove_none_english_characters(string):
+    string = string.replace("&lt", "")
+    string = string.replace("&gt", "")
+    
     return " ".join(non_english_regex.split(string))
 
 def remove_extra_spaces(string):
@@ -75,13 +78,15 @@ if __name__ == '__main__':
 
     db = DBConnector()
     sql_query = "SELECT Body from android_posts;"
+    # sql_query = "SELECT Body from android_answers;"
     cursor = db.get_cursor()
     cursor.execute(sql_query)
-    print("loading data...")
     batch_size = 1000
-    batch=cursor.fetchmany(batch_size)
-
-    while batch:
+    while True:
+        batch = cursor.fetchmany(batch_size)
+        if batch == ():
+            break
+        
         print("new batch...")
         for text in batch:
             text = remove_tags(text[0])

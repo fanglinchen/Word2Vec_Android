@@ -15,8 +15,6 @@ fp.write(u)
 fp.seek(0)
 parser.readfp(fp)
 
-
-
 class StackoverflowDumpToDBService:
     def __init__(self):
         self.db = DBConnector()
@@ -27,7 +25,8 @@ class StackoverflowDumpToDBService:
         cursor.execute(sql_query)
         
         
-        acceptedAnswers = [AcceptedAnswerId[0] for AcceptedAnswerId in cursor.fetchall()]
+        acceptedAnswers = set([AcceptedAnswerId[0] for AcceptedAnswerId in cursor.fetchall()])
+        print(type(list(acceptedAnswers)[0]))
         print("number of accepted answers:"+ str(len(acceptedAnswers)))
         print("number of accepted answers:"+ str(len(set(acceptedAnswers))))
         f = io.open(file_path, 'r', encoding="utf8")
@@ -42,7 +41,7 @@ class StackoverflowDumpToDBService:
             scanned_row_nums +=1
             if scanned_row_nums % 1000 ==0:
                 print("scanned_row_nums:"+str(scanned_row_nums))
-            if scanned_row_nums <= 1571000:
+            if scanned_row_nums <= 6786000:
                 continue
 
             if not current_line:
@@ -58,7 +57,7 @@ class StackoverflowDumpToDBService:
                 continue
 
             attributes = root.attrib
-            post_id = attributes.get('Id')
+            post_id = long(attributes.get('Id'))
 
             attributes['CreationDate'] = re.sub(r'\.\d+', '', attributes['CreationDate'].replace('T', ' '))
             creation_date = datetime.datetime.strptime(attributes['CreationDate'], '%Y-%m-%d  %H:%M:%S')
@@ -69,7 +68,7 @@ class StackoverflowDumpToDBService:
             
             if post_id not in acceptedAnswers:
                 continue
-                
+            acceptedAnswers = acceptedAnswers - set([post_id]) 
             attributes['LastEditDate'] = re.sub(r'\.\d+', '', attributes['CreationDate'].replace('T', ' '))
             attributes['LastActivityDate'] = re.sub(r'\.\d+', '', attributes['CreationDate'].replace('T', ' '))
             attributes['CommunityOwnedDate'] = re.sub(r'\.\d+', '', attributes['CreationDate'].replace('T', ' '))
@@ -112,7 +111,7 @@ class StackoverflowDumpToDBService:
 
 stackoverflowDumpToDBService = StackoverflowDumpToDBService()
 stackoverflowDumpToDBService.import_posts_from_file(
-    from_date=datetime.datetime(2010, 1, 1, 0, 0, 0),
+    from_date=datetime.datetime(2011, 11, 16, 0, 0, 0),
     until_date=datetime.datetime(2018, 1, 1, 0, 0, 0),
     file_path=parser.get('DATASET', 'PATH'),
     table_name=parser.get('DATABASE', 'TABLENAME'))
