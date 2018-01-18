@@ -77,17 +77,20 @@ if __name__ == '__main__':
     output = open(sys.argv[1], 'w')
 
     db = DBConnector()
-    sql_query = "SELECT Body from android_posts;"
-    # sql_query = "SELECT Body from android_answers;"
+    # sql_query = "SELECT Body from android_posts;"
+    sql_query = "SELECT Body from android_answers;"
     cursor = db.get_cursor()
     cursor.execute(sql_query)
     batch_size = 1000
+    i = 0
     while True:
         batch = cursor.fetchmany(batch_size)
         if batch == ():
             break
         
-        print("new batch...")
+        print("new batch..."+str(i))
+        i+=1
+
         for text in batch:
             text = remove_tags(text[0])
             text = remove_none_english_characters(text)

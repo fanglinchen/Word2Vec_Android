@@ -1,21 +1,21 @@
-f_new = open("stackoverflow.en_new")
-
-i=0
-print i
-for line in f_new:
-    i+=1
-    print str(i)+":" + line
-    1108146
-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+ 
+import logging
+import os.path
+import sys
+import multiprocessing
+ 
+from gensim.models import Word2Vec
+from gensim.models.word2vec import LineSentence
+ 
+if __name__ == '__main__':
+    model = Word2Vec.load("android.word2vec.model")
     
+    print "most similar word to pic:"
+    print model.wv.most_similar("pic")
+    print "most similar words to blob:"
+    print model.wv.most_similar("blob")
+    print "most similar word to proto:"
+    print model.wv.most_similar("proto")
     
-
-# f = open("stackoverflow.en")
-#
-# for line in f:
-#     line = line.replace(" lt ", " ")
-#     line = line.replace(" gt ", " ")
-#     f_new.write(line)
-#
-# f.close()
-# f_new.close()
