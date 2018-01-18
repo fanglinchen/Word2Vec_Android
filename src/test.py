@@ -18,4 +18,6 @@ if __name__ == '__main__':
     print model.wv.most_similar("blob")
     print "most similar word to proto:"
     print model.wv.most_similar("proto")
+    print "most similar word to gregorian"
+    print model.wv.most_similar("gregorian")
     
