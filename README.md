@@ -10,7 +10,7 @@ https://archive.org/details/stackexchange
 The dataset is fully structured in XML, so we can use this structure information for data filtering. Since we are only interested in the language of mobile app developments, we leverage the Tag information in each post to only select the Android related posts. As of today, the number of posts with Android Tag ranks the 5th place in the whole Stackoverflow site. 
 
 
-Examples:
+Here are some results to give you some impressions about the performance. 
 
 Most similar words to 'evernote':  
 icloud 0.644747257233  
@@ -84,3 +84,28 @@ streams 0.523191034794
 file 0.519219636917  
 bytes 0.519147992134  
 
+The embeddings also picked up some human language too:)  
+
+Most relevant words to 'idk':  
+dunno 0.693373262882  
+heck 0.617326140404  
+kera 0.606379508972  
+curios 0.58692407608  
+hape 0.583016514778  
+stubborn 0.582840323448  
+happ 0.577402055264  
+unclear 0.574401378632  
+obv 0.569237947464  
+embarassing 0.567026674747  
+
+Most relevant words to 'suck':  
+complicate 0.69784373045  
+hurt 0.696538448334  
+uncomfortable 0.656524300575  
+clumsy 0.652829349041  
+hurts 0.649841725826  
+unintuitive 0.63742518425  
+absurd 0.634339094162  
+overwhelming 0.633394598961  
+sloppy 0.629962265491  
+piss 0.625393986702
