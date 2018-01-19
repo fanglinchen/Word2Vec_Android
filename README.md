@@ -14,17 +14,17 @@ mysql --user=root --password=Ugdvqh#1372 --database=stackoverflow < create_answe
 
 Examples:
 
-Most similar words to 'evernote':
-icloud 0.644747257233
-instagram 0.630041241646
-dropbox 0.616084516048
-outlook 0.6095713377
-linkedin 0.606443405151
-gmail 0.590190827847
-ebay 0.573595881462
-spotify 0.573144376278
-katana 0.563836157322
-netflix 0.563594222069
+Most similar words to 'evernote':  
+icloud 0.644747257233  
+instagram 0.630041241646  
+dropbox 0.616084516048  
+outlook 0.6095713377  
+linkedin 0.606443405151  
+gmail 0.590190827847  
+ebay 0.573595881462  
+spotify 0.573144376278  
+katana 0.563836157322  
+netflix 0.563594222069  
 
 Most relevant words to 'png':  
 jpg 0.77312374115  
@@ -74,15 +74,15 @@ tempa 0.547556340694
 myint 0.541466355324  
 num 0.53715968132  
 
-Most relevant words to 'stream':
-buffered 0.62129753828
-reader 0.544205665588
-piped 0.540452182293
-byte 0.539608120918
-socket 0.532683372498
-writer 0.531789541245
-output 0.527552127838
-streams 0.523191034794
-file 0.519219636917
-bytes 0.519147992134
+Most relevant words to 'stream':  
+buffered 0.62129753828  
+reader 0.544205665588  
+piped 0.540452182293  
+byte 0.539608120918  
+socket 0.532683372498  
+writer 0.531789541245  
+output 0.527552127838  
+streams 0.523191034794  
+file 0.519219636917  
+bytes 0.519147992134  
 
