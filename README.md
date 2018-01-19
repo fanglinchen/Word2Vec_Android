@@ -9,8 +9,6 @@ https://archive.org/details/stackexchange
 
 The dataset is fully structured in XML, so we can use this structure information for data filtering. Since we are only interested in the language of mobile app developments, we leverage the Tag information in each post to only select the Android related posts. As of today, the number of posts with Android Tag ranks the 5th place in the whole Stackoverflow site. 
 
-Commands:
-mysql --user=root --password=Ugdvqh#1372 --database=stackoverflow < create_answer_table.sql
 
 Examples:
 
