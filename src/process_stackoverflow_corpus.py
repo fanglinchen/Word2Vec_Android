@@ -40,10 +40,7 @@ def infer_spaces(s):
         i -= k
 
     return " ".join(reversed(out))
-# string = "I am currently starting a game engine in Android  first foray into the platform and have the basics in place however i am unsure of the best way to approach resolution independence when using SurfaceView to draw graphics    Looking for pointers as to how to keep the game   sprites etc all looking the same independent of the screen  obviously it wouldn t be efficient to scale all the sprites every frame or store many variations for differing resolutions"
-# for word in string.lower().split(" "):
-#     print(infer_spaces(word))
-#
+
 tag_regex = re.compile('<.*?>')
 def remove_tags(string):
     removed = re.sub(tag_regex, '', string)
